@@ -5,6 +5,9 @@
 #include <ctime>
 #include <cstdlib>
 #include <Windows.h>
+#include <conio.h>
+
+class Monster;
 
 class Hero
 {
@@ -42,8 +45,14 @@ public:
     int powerGet();
     int defenceGet();
     int HPGet();
+    int HPGetMax();
     std::string nameGet();
     int magicGet();
+
+    //сеттеры?
+    void nameSet(std::string nameP);
+    void PlusMagPoint();
+    void MagSpend(int points);
     
     friend std::ostream& operator<<(std::ostream& out, const Hero& hero);
 };
@@ -77,13 +86,13 @@ public:
 class Monster
 {
     std::string name;
+    const char* printImage;
     int power;
     int defence;
     int HPmax; // максимальное значение здоровья
     int HPnow;
 public:
     Monster(std::string nameP, int powerP, int defenceP, int HPp);
-    Monster();
 
     // получение урона
     void damage(int damage, int baff);
@@ -105,6 +114,7 @@ public:
     int powerGet();
     int defenceGet();
     int HPGet();
+    int HPGetMax();
     std::string nameGet();
     //вывод облика монстра
     void print();
@@ -115,21 +125,29 @@ public:
 };
 
 
-void Scene(short level);
+void Scene(short& level, std::string& name, Item inventory[], int& InvSize);
+
+void Choice(short& level, std::string& name, Item inventory[], int& InvSize);
+
+void SetMonstersImage(Monster SwampMonsters[],
+                        Monster GardenMonster[],
+                        Monster CastleMonster[]);
 
 void PrintFightWindow(Monster& monster, Hero& hero,
                     int MonDefBaff, int MonPowBaff,
-                    int HeroDefBaff, int HeroPowBaff);
+                    int HeroDefBaff, int HeroPowBaff, short fights);
 
 void fightMenu(short& option, short& choose, int arrows,
                 Monster& monster, Hero& hero, Item inventory[],
                 int MonDefBaff, int MonPowBaff,
-                int HeroDefBaff, int HeroPowBaff);
+                int HeroDefBaff, int HeroPowBaff,
+                int& InvSize, const int InvFull, short fights);
 
 bool Fighting(int arrows, short level,
                 Monster monsters[], Hero& hero, Item inventory[],
-                int InvSize, int InvFull);
+                int& InvSize, const int InvFull,
+                Item items[], int const Objects, short fights);
 
-void GetItem(int& arrows, Item items[], int InvSize, int InvFull, const int Objects, Item inventory[], Monster& monster);
+void GetItem(int& arrows, Item items[], int& InvSize, const int InvFull, const int Objects, Item inventory[], Monster& monster);
 
 void MoveInInventory(int idx, Item inventory[], int& InvSize);

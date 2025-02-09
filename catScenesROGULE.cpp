@@ -1,24 +1,25 @@
 #include "classLibROGULE.h"
 
-void Scene(short& level, std::string& name, Item inventory[], int InvSize)
+void Scene(short& level, std::string& name, Item inventory[], int& InvSize)
 {
-    char Enter{};
     if(level == 0)
     {
+        system("cls");
+
         std::cout << "You are - a brave hero. You are going to go on a\n"
                 "journey to find the most valuable thing in the world.\n"
                 "Your way will be very dangerous and full of monsters,\n"
                 "new meetings and beautiful landscapes.\n\n"
-                "Everyone will know your namee - hero .....\n\n"
+                "Everyone will know your name - hero .....\n\n"
                 "By the way, what is your name?\n\n"
                 "\"My name is \"";
         std::cin >> name;
         system("cls");
 
-        std::cout << "Everyone will know your namee - hero " << name << "\n\n"
+        std::cout << "Everyone will know your name - hero " << name << "\n\n"
                 "After preparation, " << name << " started his/her journey.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
     }
     else if (level == 1)
@@ -28,13 +29,13 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                         "here. They look for rest in peace and howl nosily.\n"
                         "Travelers think that swamps are alive.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "But " << name << " is not scared at all! Simple ghosts\n"
                     "can't bit him/her.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << " was walking his/her way, when he/she heard\n"
@@ -43,7 +44,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     << name << " up. " << name << " tried to cut it with his/her\n"
                     "sword but vines took it off. After that an old wizard came\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"Why are you trampling my seedlings?!\" - asked wizard.\n"
@@ -52,7 +53,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 "He still was mad at " << name << " but then he helped him/her to\n"
                 "free himself/herself.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Wizard set " << name << " down on the bench next to\n"
@@ -65,7 +66,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "that you'd like to continue your journey?\"\n"
                     << name << " was absoulutely sure.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Realizing that " << name << " couldn't be persuaded,\n"
@@ -74,7 +75,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "a beautiful talisman. \"You can save up your magic power\n"
                     "in it and then let it out. It will help you in you travel.\"\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         Choice(level, name, inventory, InvSize);
@@ -82,7 +83,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
         std::cout << "And then " << name << " continued the journey.\n"
                 << name << " went to Echo swamps\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
     }   
     else if(level == 2)
@@ -93,7 +94,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     << name << " felt so light in this wonderful place!\n\n"
                     "( Your power, defence and HP increases )\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << " felt how his/her inner child was going out.\n"
@@ -102,28 +103,28 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 "Then he/she fell on the green grass and looked up.\n"
                 << name << " was looking at clouds before he/she fell asleep.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << "'s sleep was interrupted by a sheep, wich\n"
                 "decided that " << name << "'s hair is a very delicious\n"
                 "grass.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"Oh! I'm sorry, dear traveler!\" - said the\n"
                     "young cute shepherdess. " << name << " set on the\n"
                     "grass and looked around. There were lots of sheep.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"My name is Dorothy\" - said the shepherdess. -\n"
                     "\"My sheep woke you up. I'm so sorry!\"\n"
                     "\"That is OK!\" - said " << name << ".\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << " introduced himself/herself amd stood up.\n"
@@ -133,7 +134,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 << name << " couldn't resist and embellished his/her\n"
                 "story a little.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"And where are you gonna go now?\" - asked\n"
@@ -142,7 +143,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "Dorothy looked at " << name << " with admiration.\n"
                     << name << " felt proud and a little cocky.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"There are lot of creatures! They like to\n"
@@ -150,13 +151,13 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "Are you sure you want to go there?\"\n"
                     << name << " proudly raised his/her head.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Dorothy laughed and offered to lead " << name << "\n"
                     "to the garden. " << name << " received the offer.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Dorothy and " << name << " went to the garden after some\n"
@@ -164,7 +165,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "pretty shepherdess. When they came to the karge arch of the\n"
                     "garden she said - \"Now you go alone.\"\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         Choice(level, name, inventory, InvSize);
@@ -172,7 +173,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
         std::cout << "They said goodbye to each other and then " << name <<
                     "\ncontinued his/her journey through the Curly garden.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
     }
@@ -182,7 +183,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "\ncame to the curly trail. The sun was setting\n"
                     "over the horizon. It was quiet and peaceful.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << " was walking down the trail and his/her\n"
@@ -190,7 +191,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 "Flet so free and nice here.\n\n"
                 "( Your power, defence and HP increases )\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Then " << name << " noticed the tall tower not so far.\n"
@@ -200,7 +201,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "A long dragon from stone were on the tower. Lots of banners and\n"
                     "Other strange things decoreted the tower.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << " was running by trail until he/she came to the\n"
@@ -209,7 +210,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 "fish tail. Man in a purple cloak looked at " << name << " and\n"
                 "smiled.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"Ah... hello?\" - Said " << name <<
@@ -219,21 +220,21 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "it?\"\n"
                     << name << " blushed.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "\"Are you Richard Gravano&\" - asked " << name << "\n"
                     "\"I am. And I'm not very happy to see an another one\n"
                     "guest!\" - Richard drank some tea.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "He sighed. \"At first take a sit, call me your name\n"
                     "And make a company for me. I will decide will you go\n"
                     "after a talk.\"\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << name << "Took a sit. Richard poured some tea for\n"
@@ -245,7 +246,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                 "his/her adventures.\n\n"
                 "( Your power, defence and HP increases )\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "Moon was lighting. Richard looked in the sky\n"
@@ -256,13 +257,13 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "\"Will you go?\"\n\n"
                     "- \"I need a break from the madness of my tower too!\"\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
 
         std::cout << "And then " << name << "continued the journey.\n"
                     "The last location.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-        std::cin >> Enter;
+        _getch();
         system("cls");
     }
     else if(level == 4)
@@ -272,15 +273,15 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "It should be the treasure behind this door!\n"
                     << name << " pushed it and saw a big round room.\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
-            system("cls");
+        _getch();
+        system("cls");
 
         std::cout << "There were no furniture or other objects in the\n"
                 "room. But the walls...\n"
                 "There were pictures on the walls.\n"
                 "Pictures of " << name << "!\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
 
         std::cout << "All " << name << "'s journey was drawn on the walls.\n"
@@ -288,7 +289,7 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
                     "and sheep near by Curly garden. And the tea party with\n"
                     "Richard was drawn too! But where is the treasure?\n\n";
         std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
 
         std::cout << "Watching the arts " << name << " realised\n\n"
@@ -304,11 +305,10 @@ void Scene(short& level, std::string& name, Item inventory[], int InvSize)
     level++;
 }
 
-void Choice(short& level, std::string& name, Item inventory[], int InvSize)
+void Choice(short& level, std::string& name, Item inventory[], int& InvSize)
 {
     Item tincture{"Osman's tincture", 10, 2};
     Item cookies{"Dorothy's cookies", 25, 1};
-    char Enter{};
     short menuitem{};
     if(level == 1)
     {
@@ -324,10 +324,10 @@ void Choice(short& level, std::string& name, Item inventory[], int InvSize)
         if(menuitem && InvSize != 10)
         {
             inventory[InvSize++] = tincture;
-            std::cout << "\"Why not? It would be rude to refuse!\" - thought "
+            std::cout << "\"Why not? It would be rude to refuse!\" - thought\n"
                          << name << "and receive a bottle with the tincture.\n\n";
             std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
         }
         else
@@ -335,7 +335,7 @@ void Choice(short& level, std::string& name, Item inventory[], int InvSize)
                         "- " << name << " refused politely. He/she was afraid to take\n"
                         "weird tinctures from strangers\n\n";
             std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
         }
     }
@@ -356,7 +356,7 @@ void Choice(short& level, std::string& name, Item inventory[], int InvSize)
                     "adorable shepherdess. He/She received her gift with\n"
                     "pleasure.\n\n";
             std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
         }
         else
@@ -366,7 +366,7 @@ void Choice(short& level, std::string& name, Item inventory[], int InvSize)
                         "\nwas embarressed to receive something from her.\n"
                         "\"No need!\" - he/she answered\n\n";
             std::cout << "||| Click \"Enter\" to continue. |||\n";
-            std::cin >> Enter;
+            _getch();
             system("cls");
         }
     }

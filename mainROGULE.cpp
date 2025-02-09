@@ -1,10 +1,11 @@
-#include "classLibROGULE.cpp"
-#include "catScenesROGULE.cpp"
+#include "classLibROGULE.h"
+//#include "catScenesROGULE.cpp"
 
 int main()
 {
-    int LEVEL{}, //для катсцен
-        fights{}; //счетчик боев за уровень
+    short LEVEL{}, //для катсцен
+        fights{}, //счетчик боев за уровень
+        Try{ 1 }; //(проигрыш)попытаться еще раз или нет
 
             // массивы монстров трех локаций
     //Эхо топи
@@ -17,7 +18,7 @@ int main()
         {"The sank fisher", 13, 13, 33}
     };
     // вьющийся сад
-    Monster GardenMonster[5]
+    Monster GardenMonsters[5]
     {
         {"What is in the bushes", 8, 40, 30},
         {"Annoyng mosquito", 5, 50, 15},
@@ -35,26 +36,28 @@ int main()
         {"Tapestry\"Eclipse\"", 27, 15, 60}
     };
 
-    std::string heroName{};
+    SetMonstersImage(SwampMonsters, GardenMonsters, CastleMonsters);
+
     //сила, защита, здоровье, мана, имя
-    Hero hero{13, 12, 45, 0, heroName};
+        std::string heroName{};
+        Hero hero{13, 12, 45, 0, heroName};
 
         //возможные вещи в игре
     //зелья
-        Item PowerPotion{"Power potion", hero.powerGet() / 100 * 20, 2};
-        Item Shield{"Shield", hero.defenceGet() / 100 * 20, 3};
+        Item PowerPotion{"Power potion", 8, 2};
+        Item Shield{"Shield", 8, 3};
 
-        Item PeaceOfFog{"Peace of fog", hero.defenceGet() / 100 * 20, 3};
-        Item CoolStick{"Cool stick", hero.powerGet() / 100 * 15, 2};
-        Item WetLeaves{"Wet leaves", hero.defenceGet() / 100 * 15, 3};
+        Item PeaceOfFog{"Peace of fog", 5, 3};
+        Item CoolStick{"Cool stick", 6, 2};
+        Item WetLeaves{"Wet leaves", 7, 3};
 
-        Item Roses{"Roses", hero.powerGet() / 100 * 20, 2};
-        Item Flute{"Flute?", hero.powerGet() / 100 * 30, 2};
-        Item SheepFur{"Sheep's fur", hero.defenceGet() / 100 * 30, 3};
+        Item Roses{"Roses", 10, 2};
+        Item Flute{"Flute?", 12, 2};
+        Item SheepFur{"Sheep's fur", 8, 3};
 
-        Item Gouache{"Gouache", hero.powerGet() / 100 * 25, 2};
-        Item Crayons{"Crayons", hero.defenceGet() / 100 * 30, 3};
-        Item Clay{"Clay", hero.defenceGet() / 100 * 20, 3};
+        Item Gouache{"Gouache", 12, 2};
+        Item Crayons{"Crayons", 20, 3};
+        Item Clay{"Clay", 14, 3};
     //еда
         Item Fish{"Fish from swamp", 8, 1};
         Item Aplant{"Delicious plant", 30, 1};
@@ -68,7 +71,7 @@ int main()
         Item LeftSandwich("Left sandwich", 22, 1);
         Item Undrinkedtea{"Undrinked tea", 18, 1};
         //массивы вещей из трех локаций
-    Item emptyItem{};
+    Item emptyItem{ "", 0, 0 };
 
     int const Objects{8};
     Item SwampItems[Objects]{PowerPotion, Shield, PeaceOfFog, Fish, Aplant, CoolStick, Snail, WetLeaves};
@@ -85,12 +88,117 @@ int main()
                        {emptyItem},{emptyItem},{emptyItem},
                        {emptyItem}}; // пустой инвентарь
 
-    // катсцены
-    //Scene(LEVEL, heroName, inventory, InvSize);
-    // бой
 
-    //усиление персонажа после прохождения первого уровня
+    //СОЗДАНИЕ ГЕРОЯ. ИМЯ ГЕРОЯ. (LEVEL = 0)
+        Scene(LEVEL, heroName, inventory, InvSize);
+        hero.nameSet(heroName);
+
+    //ЭХО-ТОПИ (LEVEL = 1)
+            Scene(LEVEL, heroName, inventory, InvSize);
+
+        do
+        {
+            //при победе
+            if ( Fighting(arrows, LEVEL,
+                    SwampMonsters, hero, inventory,
+                    InvSize, InvFull, 
+                    SwampItems, Objects, fights) )
+            {
+                fights++;
+            }
+            //при поражении
+            else
+            {
+                fights = 0;
+                std::cout << "\t\t--- GAME OVER ---\n\n"
+                        "\t\tTry again?\n"
+                        "\t1 - Yes\n"
+                        "\t0 - No\n";
+                std::cin >> Try;
+                if(Try == 1)
+                    Try = true;
+                else
+                    return 0;
+            }
+            hero.Heal(100);//лечение героя после боя
+        } while(fights != 3 && Try);
+
+        fights = 0;
+        //усиление персонажа после прохождения уровня
+        hero.powerUp(6);
+        hero.defenceUp(5);
+        hero.HPup(18);
     
+
+    //ВЬЮЩИЙСЯ САД (LEVEL = 2)
+            system("cls");
+            Scene(LEVEL, heroName, inventory, InvSize);
+
+        do
+        {
+            //при победе
+            if ( Fighting(arrows, LEVEL,
+                    GardenMonsters, hero, inventory,
+                    InvSize, InvFull, 
+                    GardenItems, Objects, fights) )
+            {
+                fights++;
+            }
+            //при поражении
+            else
+            {
+                fights = 0;
+                std::cout << "\t\t--- GAME OVER ---\n\n"
+                        "\t\tTry again?\n"
+                        "\t1 - Yes\n"
+                        "\t0 - No\n";
+                std::cin >> Try;
+                if(Try == 0)
+                    return 0;
+            }
+            hero.Heal(100);//лечение героя после боя
+        } while(fights != 3 && Try);
+
+        fights = 0;
+        //усиление персонажа после прохождения уровня
+        hero.powerUp(11);
+        hero.defenceUp(7);
+        hero.HPup(15);
+
+
+
+    //БАШНЯ РАЗУМА (LEVEL = 3)
+            system("cls");
+            Scene(LEVEL, heroName, inventory, InvSize);
+
+        do
+        {
+            //при победе
+            if ( Fighting(arrows, LEVEL,
+                    CastleMonsters, hero, inventory,
+                    InvSize, InvFull, 
+                    CastleItems, Objects, fights) )
+            {
+                fights++;
+            }
+            //при поражении
+            else
+            {
+                fights = 0;
+                std::cout << "\t\t--- GAME OVER ---\n\n"
+                        "\t\tTry again?\n"
+                        "\t1 - Yes\n"
+                        "\t0 - No\n";
+                std::cin >> Try;
+                if(Try == 0)
+                    return 0;
+            }
+            hero.Heal(100);//лечение героя после боя
+        } while(fights != 3 && Try);
+
+    //КОНЦОВКА (LEVEL = 4)
+        system("cls");
+        Scene(LEVEL, heroName, inventory, InvSize);
 
     return 0;
 }
